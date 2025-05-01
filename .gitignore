@@ -1,0 +1,4 @@
+/rust/target
+/godot/.godot/
+/godot/android/
+.idea
