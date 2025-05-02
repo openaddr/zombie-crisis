@@ -149,5 +149,5 @@ shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pylmc")
-animation = &"down"
+animation = &"up"
 metadata/_edit_lock_ = true
