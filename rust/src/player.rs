@@ -1,4 +1,5 @@
 use crate::const_data::Direction;
+use crate::global::Global;
 use godot::classes::*;
 use godot::prelude::*;
 
@@ -17,7 +18,6 @@ struct Player {
 }
 
 impl Player {
-    
     /// 根据方向改变动画
     fn change_animation_by_direction(&mut self) {
         self.animator.set_animation(self.direction.as_str());
@@ -32,10 +32,21 @@ impl ICharacterBody2D for Player {
         self.base_mut().set_velocity(v);
         self.base_mut().move_and_slide();
 
+        let mut gd = Engine::singleton()  // todo 单例
+            .get_singleton("Global")
+            .unwrap()
+            .cast::<Global>();
+        
+        let i = gd.bind().int;
+        gd.bind_mut().int = i + 1;
+        godot_print!("{:?}", gd.bind().int);
+
         let direction_state = Direction::from_direction_vector_vector(&direction); // 获取移动方向
 
-        if let Some(direct) = direction_state { // 如果有移动方向
-            if direct != self.direction { // 如果移动方向发生改变
+        if let Some(direct) = direction_state {
+            // 如果有移动方向
+            if direct != self.direction {
+                // 如果移动方向发生改变
                 self.direction = direct; // 设置当前方向
                 self.change_animation_by_direction();
             }
