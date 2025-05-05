@@ -31,7 +31,6 @@ impl Player {
 impl ICharacterBody2D for Player {
     fn ready(&mut self) {
         godot_print!("Player ready");
-
     }
     fn physics_process(&mut self, _: f64) {
         let direction = Input::singleton().get_vector("ui_left", "ui_right", "ui_up", "ui_down");
@@ -55,12 +54,12 @@ impl ICharacterBody2D for Player {
 
         let gd = global();
         let gd = gd.bind();
-        self.camera.set_limit(Side::TOP, 0);  // 每帧设置世界边界, 太浪费性能, 是否能优化
+        self.camera.set_limit(Side::TOP, 0);  // 每帧设置世界边界, todo 太浪费性能, 是否能优化
         self.camera.set_limit(Side::LEFT, 0);
         self.camera.set_limit(Side::BOTTOM, gd.world_size.unwrap().y);
         self.camera.set_limit(Side::RIGHT, gd.world_size.unwrap().x);
 
-        // godot_print!("camera ready: {:?}", self.camera)
+        // todo 根据地图大小限制人物移动范围, 而不是通过空气墙
         
     }
 }
