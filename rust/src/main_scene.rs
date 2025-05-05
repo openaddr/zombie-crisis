@@ -28,5 +28,10 @@ impl INode for MainScene {
         let mut global = global();
         let mut gd_mut = global.bind_mut();
         gd_mut.world_size = Some(world_size);
+        godot_print!("设置世界大小完毕");
+        // let mut gd = Player::new_alloc();
+        // gd.set_position(Vector2::new(51.0, 90.0));
+        // gd_mut.base_mut().add_child(&gd);
+        // godot_print!("添加玩家完毕")
     }
 }

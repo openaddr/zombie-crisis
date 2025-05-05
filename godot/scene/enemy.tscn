@@ -183,3 +183,8 @@ sprite_frames = SubResource("SpriteFrames_n7w8d")
 animation = &"right"
 frame_progress = 0.726852
 metadata/_edit_lock_ = true
+
+[node name="Nav" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Nav"]
+debug_enabled = true

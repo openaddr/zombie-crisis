@@ -5,9 +5,18 @@ edition = "2024"
 
 [dependencies]
 async-compat = "0.2.4"
-gdext_coroutines = { version = "0.7.1", features = ["async"] }
-godot = { version = "0.2.4", features = ["experimental-threads"] }
+gdext_coroutines = { package = "gdext_coroutines", git = "https://github.com/Houtamelo/gdext_coroutines", features = ["async"] }
+
+godot = { git = "https://github.com/godot-rust/gdext", branch = "master", features = [
+    "experimental-threads", "default", "experimental-godot-api"
+] }
 smol = "2.0.2"
+
+
+[patch.crates-io]
+godot = { git = "https://github.com/godot-rust/gdext", branch = "master", features = [
+    "experimental-threads",
+] }
 
 [lib]
 crate-type = ["cdylib"]
