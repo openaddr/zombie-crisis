@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://cjmhs3rku5w4r"]
+[gd_scene load_steps=10 format=4 uid="uid://cjmhs3rku5w4r"]
 
 [ext_resource type="Texture2D" uid="uid://bjlauqsbv53jr" path="res://TilesetGrass/overworld_tileset_grass.png" id="1_wgwml"]
 [ext_resource type="PackedScene" uid="uid://dg4egifk6diiu" path="res://scene/player.tscn" id="2_ry1uq"]
+[ext_resource type="PackedScene" uid="uid://b0fo5orxmwc4n" path="res://scene/enemy.tscn" id="3_fb1ex"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ry1uq"]
 texture = ExtResource("1_wgwml")
@@ -230,6 +231,7 @@ texture = ExtResource("1_wgwml")
 
 [sub_resource type="TileSet" id="TileSet_fb1ex"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ry1uq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgwml"]
@@ -446,6 +448,7 @@ texture = ExtResource("1_wgwml")
 2:20/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ry1uq"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_wgwml")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry1uq"]
@@ -466,28 +469,35 @@ tile_map_data = PackedByteArray("AAAjAAAAAAAAAAwAAAAjAAEAAAAAAA0AAAAjAAIAAAAAAA4
 tile_set = SubResource("TileSet_ry1uq")
 
 [node name="Player" parent="." instance=ExtResource("2_ry1uq")]
-position = Vector2(17, 55)
+position = Vector2(51, 91)
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
 position = Vector2(-10, 184)
 shape = SubResource("RectangleShape2D_ry1uq")
 
 [node name="RightWall" type="StaticBody2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 position = Vector2(650, 184)
 shape = SubResource("RectangleShape2D_ry1uq")
 
 [node name="TopWall" type="StaticBody2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
 position = Vector2(320, -10)
 shape = SubResource("RectangleShape2D_fb1ex")
 
 [node name="ButtomWall" type="StaticBody2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ButtomWall"]
 position = Vector2(320, 378)
 shape = SubResource("RectangleShape2D_fb1ex")
+
+[node name="Enemy" parent="." instance=ExtResource("3_fb1ex")]
+position = Vector2(17, 115)

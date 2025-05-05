@@ -66,3 +66,4 @@ reloadable = true
 [icons]
 MainScene = "res://addons/rust/NodeRustLarge.svg"
 Player = "res://addons/rust/NodeRustLarge.svg"
+Enemy = "res://addons/rust/NodeRustLarge.svg"

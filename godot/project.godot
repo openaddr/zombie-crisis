@@ -56,6 +56,14 @@ ui_down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="墙"
+2d_physics/layer_2="玩家"
+2d_physics/layer_3="敌人"
+2d_physics/layer_4="地图边界"
+2d_physics/layer_5="道具"
+
 [physics]
 
 2d/physics_engine="Rapier2D"
