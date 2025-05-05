@@ -26,7 +26,7 @@ struct Enemy {
 impl ICharacterBody2D for Enemy {
     fn physics_process(&mut self, delta: f64) {
         let gd = global();
-        let position = gd.bind().players[0].get_position();
+        let position = gd.bind().players[0].get_position(); // todo 需要防护
         self.navi.set_target_position(position);
         if self.navi.is_navigation_finished() {
             return;
