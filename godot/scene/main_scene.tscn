@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cjmhs3rku5w4r"]
+[gd_scene load_steps=9 format=4 uid="uid://cjmhs3rku5w4r"]
 
 [ext_resource type="Texture2D" uid="uid://bjlauqsbv53jr" path="res://TilesetGrass/overworld_tileset_grass.png" id="1_wgwml"]
 [ext_resource type="PackedScene" uid="uid://dg4egifk6diiu" path="res://scene/player.tscn" id="2_ry1uq"]
@@ -448,6 +448,12 @@ texture = ExtResource("1_wgwml")
 [sub_resource type="TileSet" id="TileSet_ry1uq"]
 sources/0 = SubResource("TileSetAtlasSource_wgwml")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry1uq"]
+size = Vector2(20, 368)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb1ex"]
+size = Vector2(680, 20)
+
 [node name="MainScene" type="MainScene"]
 
 [node name="Road" type="TileMapLayer" parent="."]
@@ -461,3 +467,27 @@ tile_set = SubResource("TileSet_ry1uq")
 
 [node name="Player" parent="." instance=ExtResource("2_ry1uq")]
 position = Vector2(17, 55)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-10, 184)
+shape = SubResource("RectangleShape2D_ry1uq")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(650, 184)
+shape = SubResource("RectangleShape2D_ry1uq")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(320, -10)
+shape = SubResource("RectangleShape2D_fb1ex")
+
+[node name="ButtomWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtomWall"]
+position = Vector2(320, 378)
+shape = SubResource("RectangleShape2D_fb1ex")

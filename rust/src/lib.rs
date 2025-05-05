@@ -2,12 +2,13 @@ use crate::global::Global;
 use godot::classes::Engine;
 use godot::init::InitLevel;
 use godot::obj::NewAlloc;
-use godot::prelude::{ExtensionLibrary, gdextension, godot_error};
+use godot::prelude::{gdextension, godot_error, ExtensionLibrary};
 
 mod const_data;
 mod global;
 mod main_scene;
 mod player;
+mod enemy;
 
 struct Ext;
 
