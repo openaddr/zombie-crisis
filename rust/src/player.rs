@@ -18,6 +18,8 @@ pub struct Player {
 
     #[init(node = "Camera2D")]
     camera: OnReady<Gd<Camera2D>>,
+
+    name : String,
 }
 
 impl Player {
@@ -69,5 +71,11 @@ impl ICharacterBody2D for Player {
         self.change_camera_limit(); // 改变相机边界
         self.set_v_and_move(direction);
         self.change_animation_by_direction(&direction);
+    }
+
+    fn ready(&mut self) {
+        let mut gd = global();
+        let mut gd = gd.bind_mut();
+        gd.players.push(self.to_gd());
     }
 }

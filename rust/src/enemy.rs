@@ -3,6 +3,7 @@ use crate::const_data::Direction;
 use crate::player::Player;
 use godot::classes::{AnimatedSprite2D, CharacterBody2D, ICharacterBody2D, NavigationAgent2D};
 use godot::prelude::*;
+use crate::global::global;
 
 #[derive(GodotClass)]
 #[class(init, base = CharacterBody2D)]
@@ -24,14 +25,9 @@ struct Enemy {
 #[godot_api]
 impl ICharacterBody2D for Enemy {
     fn physics_process(&mut self, delta: f64) {
-        let player = self
-            .base()
-            .get_tree()
-            .unwrap()
-            .get_current_scene()
-            .unwrap()
-            .get_node_as::<Player>("Player");
-        self.navi.set_target_position(player.get_position());
+        let gd = global();
+        let position = gd.bind().players[0].get_position();
+        self.navi.set_target_position(position);
         if self.navi.is_navigation_finished() {
             return;
         }
