@@ -13,7 +13,11 @@ pub struct Global {
     pub players: Vec<Gd<Player>>,
 }
 
-pub fn global() -> Gd<Global> {
+pub fn global() -> Gd<Global> {  // todo 所有获取单例可以更换为godot自带的自动加载单例: TheGlobal
+    // Engine::singleton()
+    //     .get_singleton("TheGlobal")
+    //     .unwrap()
+    //     .cast::<Global>();
     Engine::singleton()
         .get_singleton("Global")
         .unwrap()

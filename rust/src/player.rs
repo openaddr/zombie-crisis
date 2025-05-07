@@ -1,5 +1,5 @@
 use crate::const_data::Direction;
-use crate::global::global;
+use crate::global::{global, Global};
 use godot::classes::*;
 use godot::prelude::*;
 
@@ -7,6 +7,9 @@ use godot::prelude::*;
 #[class(init,base=CharacterBody2D)]
 pub struct Player {
     base: Base<CharacterBody2D>,
+
+    #[init(node = "/root/TheGlobal")]
+    global: OnReady<Gd<Global>>,
 
     #[init(val = 100.0)]
     speed: f32,
@@ -18,16 +21,14 @@ pub struct Player {
 
     #[init(node = "Camera2D")]
     camera: OnReady<Gd<Camera2D>>,
-
+    
     name : String,
 }
 
 impl Player {
     ///  改变相机边界
     fn change_camera_limit(&mut self) {
-        let gd = global();
-        let gd = gd.bind();
-        let world_size = gd.world_size.expect("地图大小值尚未初始化");
+        let world_size = self.global.bind().world_size.expect("地图大小值尚未初始化");
         self.camera.set_limit(Side::TOP, 0); // 每帧设置世界边界, todo 太浪费性能, 是否能优化
         self.camera.set_limit(Side::LEFT, 0);
         self.camera.set_limit(Side::BOTTOM, world_size.y);

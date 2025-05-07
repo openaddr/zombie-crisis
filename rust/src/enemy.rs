@@ -1,9 +1,8 @@
 use crate::const_data::Direction;
 
-use crate::player::Player;
+use crate::global::global;
 use godot::classes::{AnimatedSprite2D, CharacterBody2D, ICharacterBody2D, NavigationAgent2D};
 use godot::prelude::*;
-use crate::global::global;
 
 #[derive(GodotClass)]
 #[class(init, base = CharacterBody2D)]
