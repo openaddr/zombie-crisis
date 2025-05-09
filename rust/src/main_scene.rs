@@ -1,23 +1,26 @@
-use crate::global::{global, Global};
+use crate::global::{GAME_DATA, GM};
 use crate::player::Player;
 use godot::classes::{TileMapLayer, Timer};
 use godot::prelude::*;
+use crate::game_manager;
 
 #[derive(GodotClass)]
 #[class(init,base=Node)]
 struct MainScene {
     base: Base<Node>,
 
+    #[init(node = "/root/gm")]
+    gm: OnReady<Gd<GM>>,
+
     #[init(node = "Player")]
     player: OnReady<Gd<Player>>,
-    
+
     #[init(node = "Road")]
     road: OnReady<Gd<TileMapLayer>>,
 }
 
 impl MainScene {
-
-    fn spawn_enemy(&mut self){
+    fn spawn_enemy(&mut self) {
         godot_print!("spawn_enemy")
     }
 }
@@ -32,10 +35,8 @@ impl INode for MainScene {
         godot_print!("{:?} ", world_size);
         godot_print!("rect2i.end() {:?} ", rect2i.end());
         godot_print!("rect2i.position {:?} ", rect2i.position);
-
-        let mut global = global();
-        let mut gd_mut = global.bind_mut();
-        gd_mut.world_size = Some(world_size);
+        GAME_DATA.lock().world_size  = Some(world_size);
+        // self.gm.bind_mut().world_size = Some(world_size);
         godot_print!("设置世界大小完毕");
         // let mut gd = Player::new_alloc();
         // gd.set_position(Vector2::new(51.0, 90.0));
@@ -57,13 +58,6 @@ impl INode for MainScene {
         self.base_mut().add_child(&timer);
         // self.base_mut().
 
-        
         godot_print!("添加定时器完毕");
-
-        let node_name = format!("/root/{}", "TheGlobal");
-        let mut gd1 = self.base().get_node_as::<Global>(&node_name);
-        gd1.bind_mut().world_size = Some(world_size);
-        godot_print!("{:?}", gd1.bind().world_size);
-
     }
 }

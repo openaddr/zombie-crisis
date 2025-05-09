@@ -26,7 +26,7 @@ impl Direction {
             None // 如果没有移动向量,则返回None,代表静止
         }
     }
-
+    
     pub fn as_str(&self) -> &'static str {
         match *self {
             // *self 有 Direction 类型
