@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=27 format=3 uid="uid://dc36tj5uno567"]
+[gd_resource type="TileSet" load_steps=28 format=3 uid="uid://dc36tj5uno567"]
 
 [ext_resource type="Texture2D" uid="uid://bjlauqsbv53jr" path="res://TilesetGrass/overworld_tileset_grass.png" id="1_vy2bu"]
 
@@ -87,6 +87,16 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y14q6"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_elc6u"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_j2ivn"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -295,6 +305,7 @@ texture = ExtResource("1_vy2bu")
 1:7/0 = 0
 1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:7/0 = 0
+2:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_y14q6")
 3:7/0 = 0
 4:7/0 = 0
 5:7/0 = 0
@@ -313,7 +324,7 @@ texture = ExtResource("1_vy2bu")
 1:8/0 = 0
 1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:8/0 = 0
-2:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_y14q6")
+2:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_elc6u")
 3:8/0 = 0
 4:8/0 = 0
 5:8/0 = 0

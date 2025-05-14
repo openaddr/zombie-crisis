@@ -2,11 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://64id44xnfcx" path="res://assets/Spritesheets/001_attack.png" id="1_b7koy"]
 [ext_resource type="Texture2D" uid="uid://q7h8j5nig26p" path="res://assets/Spritesheets/idle.png" id="1_h08p8"]
+[ext_resource type="Shape2D" uid="uid://cu58wecfxd5v0" path="res://tres/player_collision.tres" id="1_yvcfn"]
 [ext_resource type="Texture2D" uid="uid://ccvp5ix26olmg" path="res://assets/Spritesheets/001_death.png" id="2_yvcfn"]
 [ext_resource type="Texture2D" uid="uid://cy8x6tvpe0we1" path="res://assets/Spritesheets/001_walking.png" id="4_ulb22"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f87vc"]
-size = Vector2(15, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1e552"]
 atlas = ExtResource("1_b7koy")
@@ -172,16 +170,16 @@ animations = [{
 }]
 
 [node name="Enemy" type="Enemy"]
-scale = Vector2(0.7, 0.7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 6.5)
-shape = SubResource("RectangleShape2D_f87vc")
+position = Vector2(0, 5)
+shape = ExtResource("1_yvcfn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_n7w8d")
-animation = &"right"
-frame_progress = 0.726852
+animation = &"death"
+frame_progress = 0.809536
 metadata/_edit_lock_ = true
 
 [node name="Nav" type="Node2D" parent="."]

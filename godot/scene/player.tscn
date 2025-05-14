@@ -1,9 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dg4egifk6diiu"]
 
+[ext_resource type="Shape2D" uid="uid://cu58wecfxd5v0" path="res://tres/player_collision.tres" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://ctpo6yefyswij" path="res://assets/Player.png" id="1_xo3ru"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(26, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("1_xo3ru")
@@ -142,14 +140,14 @@ animations = [{
 
 [node name="Player" type="Player"]
 texture_filter = 1
-scale = Vector2(0.3, 0.3)
 collision_layer = 2
 collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_onrkg")
+shape = ExtResource("1_hjaqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_pylmc")
 animation = &"down"
 frame_progress = 0.334585

@@ -10,7 +10,7 @@ use godot::prelude::*;
 struct Enemy {
     base: Base<CharacterBody2D>,
 
-    #[init(val = 80.0)]
+    #[init(val = 40.0)]
     speed: f32,
 
     direction: Direction,
